@@ -1,0 +1,331 @@
+
+.sidebar .nav-link { 
+    display: flex; 
+    align-items: center; 
+    gap: 12px; 
+    padding: 12px 20px; 
+    border-radius: 12px; 
+    margin: 5px 15px; 
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.sidebar .nav-link i {
+    width: 20px; /* Fixed width for icons ensures text starts at the same spot */
+    text-align: center;
+}
+
+.sidebar .nav-link.active { 
+    background: var(--primary) !important; 
+    color: white !important; 
+}
+/* --- 🌿 FRESH & NATURAL THEME --- */
+:root { 
+    --primary: #10b981;       
+    --primary-dark: #059669;  
+    --secondary: #0ea5e9;     
+    --accent: #84cc16;        
+    --bg-body: #f0fdf4;       
+    --dark: #1e293b;          
+    --text-muted: #64748b;
+    --glass: rgba(255, 255, 255, 0.95);
+    --shadow-sm: 0 2px 4px rgba(16, 185, 129, 0.05);
+    --shadow-md: 0 8px 20px -6px rgba(16, 185, 129, 0.15);
+    --shadow-lg: 0 20px 40px -10px rgba(16, 185, 129, 0.2);
+    --radius: 20px;
+}
+
+body { 
+    font-family: 'Poppins', sans-serif; 
+    background-color: var(--bg-body); 
+    color: var(--dark); 
+    overflow-x: hidden; 
+    -webkit-font-smoothing: antialiased;
+    background-image: radial-gradient(#dcfce7 1px, transparent 1px);
+    background-size: 30px 30px;
+}
+
+/* --- 🟢 FIX 1: NAVBAR (Layering) --- */
+.navbar-glass { 
+    position: fixed;
+    top: 0; 
+    left: 0;
+    width: 100%;
+    height: 80px; /* Explicit height */
+    z-index: 1000; /* High, but lower than Toast/Modal */
+    
+    background: rgba(255, 255, 255, 0.95); 
+    backdrop-filter: blur(12px); 
+    border-bottom: 1px solid rgba(16, 185, 129, 0.1); 
+    box-shadow: var(--shadow-sm);
+    padding: 0; /* Bootstrap handles internal padding */
+}
+.navbar-glass .container {
+    height: 100%; /* Center vertically */
+}
+.navbar-brand { 
+    font-weight: 700; 
+    color: var(--primary-dark) !important; 
+    letter-spacing: -0.5px;
+}
+
+/* --- 🟢 FIX 2: PUSH HOME PAGE DOWN --- */
+/* This prevents the Home Page from hiding behind the navbar */
+#landing-page {
+    padding-top: 100px !important; 
+}
+
+/* --- 🟢 FIX 3: PUSH DASHBOARD DOWN --- */
+.dashboard-container { 
+    display: flex; 
+    height: 100vh; 
+    padding-top: 80px; /* Push content exactly below navbar */
+}
+
+/* --- 🟢 FIX 4: SIDEBAR SPACING --- */
+.sidebar { 
+    width: 260px; 
+    background: white; 
+    border-right: 1px solid #e2e8f0; 
+    height: 100vh;           
+    position: fixed; 
+    top: 0;                  
+    padding-top: 100px; /* Push menu links down so they aren't hidden */
+    z-index: 900;       /* Below Navbar */
+    display: flex; 
+    flex-direction: column;
+    overflow-y: auto;        
+}
+
+.main-content { 
+    margin-left: 260px; 
+    flex: 1; 
+    padding: 40px; 
+    overflow-y: auto; 
+}
+
+/* --- 🟢 FIX 5: TOAST NOTIFICATIONS (Force on Top) --- */
+.toast-container {
+    z-index: 99999 !important; /* HIGHEST PRIORITY */
+    top: 20px !important;
+    right: 20px !important;
+    left: auto !important;
+    transform: none !important;
+}
+
+/* Dropdowns must also be high */
+.dropdown-menu {
+    z-index: 10001 !important;
+}
+
+/* --- REST OF THEME (Unchanged) --- */
+.nav-link { 
+    padding: 14px 20px; 
+    border-radius: 14px; 
+    color: var(--text-muted); 
+    font-weight: 500; 
+    transition: all 0.2s ease;
+    margin-bottom: 8px; 
+    display: flex; align-items: center; gap: 14px;
+}
+.nav-link:hover { background: #ecfdf5; color: var(--primary-dark); transform: translateX(4px); }
+.nav-link.active { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); color: white; box-shadow: 0 6px 15px -3px rgba(16, 185, 129, 0.4); }
+.nav-link.active i { color: white; }
+
+.pro-card { background: white; border-radius: var(--radius); border: 1px solid #f0fdf4; box-shadow: var(--shadow-md); transition: transform 0.3s ease; overflow: hidden; position: relative; }
+.pro-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); border-color: var(--primary); }
+
+.form-control, .form-select { padding: 14px 18px; border-radius: 12px; border: 1px solid #cbd5e1; background: #ffffff; font-size: 0.95rem; transition: 0.2s; }
+.form-control:focus { border-color: var(--primary); box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.15); outline: none; }
+
+.btn-primary { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); border: none; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3); transition: all 0.2s; }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 16px rgba(16, 185, 129, 0.4); }
+.btn-outline-primary { color: var(--primary-dark); border-color: var(--primary); }
+.btn-outline-primary:hover { background: var(--primary); border-color: var(--primary); }
+
+.ride-price-badge { background: #ecfdf5; color: var(--primary-dark); padding: 8px 16px; border-radius: 30px; font-weight: 700; font-size: 1.1rem; border: 1px solid var(--primary); }
+
+.location-timeline { position: relative; padding-left: 20px; margin: 15px 0; border-left: 2px dashed #94a3b8; }
+.timeline-dot { position: absolute; left: -6px; width: 10px; height: 10px; background: white; border: 2px solid var(--primary); border-radius: 50%; }
+.timeline-dot.top { top: 0; border-color: var(--primary); }
+.timeline-dot.bottom { bottom: 0; border-color: var(--secondary); }
+
+#routeMap { height: 500px; width: 100%; background-color: #e2e8f0; border-radius: var(--radius); }
+.avatar-circle { width: 42px; height: 42px; background: #f1f5f9; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; color: var(--text-muted); font-size: 0.9rem;}
+.d-none { display: none !important; }
+.badge-soft { background: #ecfdf5; color: var(--primary-dark); font-weight: 600; }
+
+@keyframes slideIn { from { transform: translateY(-20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+.toast { animation: slideIn 0.3s ease; border-radius: 12px; font-family: 'Poppins'; }
+
+    /* --- 🛠️ HOW IT WORKS SECTION --- */
+.step-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 24px;
+    border: 1px solid #f0fdf4; /* Very light green border */
+    box-shadow: 0 10px 30px -10px rgba(16, 185, 129, 0.1);
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    height: 100%;
+    z-index: 2;
+}
+
+.step-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px -10px rgba(16, 185, 129, 0.2);
+    border-color: var(--primary);
+}
+
+/* The Green Number Circle (1, 2, 3) */
+.step-number {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 40px;
+    background: var(--primary);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 10px rgba(16, 185, 129, 0.4);
+    border: 4px solid white; /* White ring around it */
+}
+
+/* Icon Styling */
+.step-icon {
+    width: 70px;
+    height: 70px;
+    background: #ecfdf5; /* Mint background */
+    color: var(--primary-dark);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    margin: 0 auto 1.5rem auto;
+    transition: 0.3s;
+}
+
+.step-card:hover .step-icon {
+    background: var(--primary);
+    color: white;
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* Connector Line (Desktop Only) */
+@media (min-width: 992px) {
+    .steps-container { position: relative; }
+    .steps-container::before {
+        content: '';
+        position: absolute;
+        top: 50px; /* Aligns with icons */
+        left: 15%;
+        right: 15%;
+        height: 2px;
+        background: repeating-linear-gradient(to right, #10b981 0, #10b981 10px, transparent 10px, transparent 20px);
+        z-index: 0;
+        opacity: 0.3;
+    }
+}
+/* --- 📱 OVERALL MOBILE RESPONSIVENESS ENGINE --- */
+
+@media (max-width: 992px) {
+    /* 1. Sidebar Transformation */
+    .sidebar {
+        width: 280px;
+        transform: translateX(-100%); /* Move off-screen */
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 10px 0 30px rgba(0,0,0,0.1);
+        padding-top: 90px;
+        background: white;
+        position: fixed; /* Ensures it stays put while scrolling */
+        height: 100vh;   /* Full screen height */
+        z-index: 1050;   /* Higher than the navbar (1000) */
+        top: 0;
+        left: 0;
+        visibility: hidden; /* Add this */
+    }
+
+    /* When you toggle the 'active' class via JS, it slides in */
+    .sidebar.active {
+        transform: translateX(0);
+        visibility: visible; /* Add this */
+    }
+
+    /* 2. Content Adjustment */
+    .main-content {
+        margin-left: 0 !important; /* Full width on mobile */
+        padding: 20px 15px;
+        width: 100%;
+    }
+
+    .dashboard-container {
+        flex-direction: column;
+    }
+
+    /* 3. Navigation Bar Tweaks */
+    .navbar-glass {
+    height: 80px; 
+    pointer-events: none; /* Allows clicks to pass through the empty parts of the nav */
+}
+
+    .navbar-brand {
+        font-size: 1.1rem;
+    }
+
+    /* 4. Grid & Card Fixes */
+    .row > * {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .pro-card {
+        margin-bottom: 20px;
+    }
+
+    /* 5. Typography */
+    h1 { font-size: 1.8rem !important; }
+    h2 { font-size: 1.5rem !important; }
+
+    /* 6. Form Optimization */
+    .form-control, .btn {
+        width: 100%; /* Make inputs/buttons tap-friendly */
+        height: 50px;
+    }
+
+    /* 7. Hide desktop-only elements */
+    .steps-container::before {
+        display: none;
+    }
+}
+
+/* Specific Small Phone Adjustments */
+@media (max-width: 480px) {
+    .hero-section {
+        text-align: center;
+        padding: 60px 10px;
+    }
+
+    .ride-price-badge {
+        font-size: 0.9rem;
+        padding: 5px 12px;
+    }
+    
+    /* Ensure maps and large blocks don't overflow */
+    #routeMap {
+        height: 300px;
+    }
+}
+.navbar-glass .container, 
+.navbar-glass .nav-link, 
+.navbar-brand,
+.navbar-toggler {
+    pointer-events: auto; /* Makes sure the ACTUAL links/buttons in the nav still work */
+}
