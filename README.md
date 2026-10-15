@@ -43,7 +43,7 @@ Follow these steps to run the project locally on your machine.
 
 ### 1. Clone the Repository
 ```bash
-git clone [https://github.com/svjadhav2010-hub/SwiftWheels.git](https://github.com/svjadhav2010-hub/SwiftWheels.git)
+git clone [https://github.com/OmChumbhale/Swiftwheels](https://github.com/OmChumbhale/Swiftwheels)
 cd SwiftWheels
 ```
 2. Install Dependencies
@@ -84,4 +84,4 @@ SwiftWheels/
 ├── .env                # Environment Variables (Not pushed to Git)
 ├── .gitignore          # Files to ignore (node_modules, .env)
 └── README.md           # Project Documentation
-# Internship-Project
+
