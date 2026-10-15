@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
+const path = require('path');
 
 // 1. Import our custom utilities and routes
 const transporter = require('./utils/email'); 
@@ -13,7 +14,7 @@ const User = require('./models/User');
 const Ride = require('./models/Ride');
 
 const app = express();
-app.use(express.static('public')); 
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 
 // ==========================
@@ -168,4 +169,9 @@ app.post('/api/contact', async (req, res) => {
         });
     }
 });
-app.listen(process.env.PORT, () => console.log(`🚀 Server running at http://localhost:${process.env.PORT}`));
+if (require.main === module) {
+    const port = process.env.PORT || 3000;
+    app.listen(port, () => console.log(`🚀 Server running at http://localhost:${port}`));
+}
+
+module.exports = app;

@@ -75,6 +75,18 @@ Bash
 node server.js
 Visit http://localhost:3000 in your browser to see the app live.
 
+## Deploy on Vercel
+
+1. Import this GitHub repository in Vercel and use the repository root as the project root.
+2. Add these environment variables in **Project Settings → Environment Variables**:
+	- `MONGO_URI`
+	- `EMAIL_USER`
+	- `EMAIL_PASS`
+	- `ADMIN_EMAIL`
+	- `SYSTEM_EMAIL`
+3. In MongoDB Atlas, allow connections from Vercel and ensure the database user has the required permissions.
+4. Deploy or redeploy the project. Do not add `.env` to GitHub; enter secrets only in Vercel's environment-variable settings.
+
 SwiftWheels/
 ├── models/             # Mongoose Database Schemas (User, Ride, Booking)
 ├── public/             # Static Assets (HTML, CSS, Client-side JS) # Frontend logic (Map integration, Forms)
